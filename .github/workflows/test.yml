@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - 'releases/*'
+      - develop
 
 jobs:
   # unit tests
@@ -23,3 +24,5 @@ jobs:
     - uses: ./
       with:
         milliseconds: 1000
+    - run: |
+        env | sort
