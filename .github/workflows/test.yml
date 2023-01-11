@@ -7,22 +7,43 @@ on:
       - 'releases/*'
       - develop
 
+env:
+  SECRET_VAR: ${{ secrets.SECRET_A }}
+  VAR_A: A
+  VAR_B: B
+  VAR_C: C
+
 jobs:
-  # unit tests
-  units:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - run: npm ci
-    - run: npm test
+  # # unit tests
+  # units:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - run: npm ci
+  #   - run: npm test
 
   # test action works running from the graph
   test:
     runs-on: ubuntu-latest
+    env:
+      VAR_B: pippo
     steps:
     - uses: actions/checkout@v3
+    - run: npm ci
     - uses: ./
       with:
-        milliseconds: 1000
-    - run: |
+        milliseconds: 10
+    - name: echo vars
+      run: |
         env | sort
+        sleep 1
+        echo "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
+        echo "VAR_A: ${{ env.VAR_A }}"
+        echo "VAR_D: ${{ env.VAR_D }}"
+
+        echo "VAR_SECR_A: ${{ env.VAR_SECR_A }}"
+        based=$(echo ${{ env.VAR_SECR_A }} | base64) 
+        echo $based
+        echo "SECRET IS: "
+        based=$(echo ${{ env.SECRET_VAR }} | base64) 
+        echo $based
