@@ -9,9 +9,9 @@ async function read_yml() {
   // Get document, or throw exception on error
   try {
     const doc = yaml.load(fs.readFileSync('inputs/base.yml', 'utf8'));
-    console.info("~~~READING YML FILE~~~~")
-    console.log(doc);
-    console.log(doc.env.VAR_A);
+    core.info("~~~READING YML FILE~~~~")
+    core.info(doc);
+    core.info(doc.env.VAR_A);
     core.exportVariable("VAR_A", doc.env.VAR_A);
   } catch (e) {
     console.log(e);
