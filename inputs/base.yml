@@ -1,0 +1,4 @@
+env: 
+  VAR_A: A
+  VAR_B: B
+  VAR_C: C
