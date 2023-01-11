@@ -12,7 +12,7 @@ async function read_yml() {
     console.info("~~~READING YML FILE~~~~")
     console.log(doc);
     console.log(doc.env.VAR_A);
-    core.exportVariable("VAR_A", VAR_A);
+    core.exportVariable("VAR_A", doc.env.VAR_A);
   } catch (e) {
     console.log(e);
   }
