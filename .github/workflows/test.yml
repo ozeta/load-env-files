@@ -40,6 +40,7 @@ jobs:
         echo "¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥"
         echo "VAR_A: ${{ env.VAR_A }}"
         echo "VAR_D: ${{ env.VAR_D }}"
+        echo "VAR_E: ${{ env.VAR_E }}"
 
         echo "VAR_SECR_A: ${{ env.VAR_SECR_A }}"
         based=$(echo ${{ env.VAR_SECR_A }} | base64) 
@@ -47,3 +48,7 @@ jobs:
         echo "SECRET IS: "
         based=$(echo ${{ env.SECRET_VAR }} | base64) 
         echo $based
+        based=$(echo ${{ env.VAR_E }} | base64) 
+        echo "SECRET_E: $based"
+        echo "TEST"
+        echo "SEGRETO" | base64

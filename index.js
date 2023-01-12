@@ -13,7 +13,9 @@ async function run() {
     const doc1 = yaml.load(fs.readFileSync('.github/workflows/codeql-analysis.yml', 'utf8'));
     core.info("~~~READING YML FILE~~~~")
     core.info("reading yml file: " + doc1.env.VAR_D)
+    core.info("reading secret yml file: " + doc1.env.VAR_E)
     core.exportVariable("VAR_D", doc1.env.VAR_D);
+    core.exportVariable("VAR_E", doc1.env.VAR_E);
   } catch (error) {
     core.setFailed(error.message)
   }

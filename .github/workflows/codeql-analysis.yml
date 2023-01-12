@@ -22,7 +22,7 @@ on:
 
 env:
   VAR_D: D
-
+  VAR_E: ${{ secrets.SECRET_E }}
 jobs:
   analyze:
     name: Analyze
